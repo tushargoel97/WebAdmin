@@ -1,4 +1,3 @@
-from invoke import Responder
 from fabric import Connection
 
 class OperationsUtil():
