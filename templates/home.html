@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Portal</title>
+</head>
+<body>
+    <div style="display:flex;margin:auto">
+    <form method="POST" action="/connect">
+        <h3>Enter Machine IP</h3>
+        <div>
+            <label>Enter IP:</label>
+            <input name="system_ip" type="text" placeholder="IP Address"/>
+        </div>
+        <h3>Enter Credentials</h3>
+        <div>
+            <label>Enter Username:</label>
+            <input name="username" type="text" placeholder="Username"/>
+        </div>
+        <div>
+            <label>Enter Password:</label>
+            <input name="password" type="password" placeholder="Password"/>
+        </div>
+        <div style="margin-top:2em">
+            <button type="submit">Submit</button>
+            <button type="reset">Clear</button>
+        </div>
+    </form></div>
+</body>
+</html>

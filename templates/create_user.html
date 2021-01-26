@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Admin Portal</title>
+</head>
+<body>
+    <form method="POST" action="/create">
+        <h3>Enter User Credentials</h3>
+        <div>
+            <label>Enter Username</label>
+            <input name="username" type="text" placeholder="Username" required/>
+        </div>
+        <div>
+            <label>Enter Password</label>
+            <input name="password" type="password" placeholder="Password" required/>
+        </div>
+        <div>
+            <label>Enter Directory Name</label>
+            <input name="dirname" type="text" placeholder="Directory Name"/>
+        </div>
+        <div style="margin-top:2em">
+            <button type="submit">Submit</button>
+            <button type="reset">Clear</button>
+        </div>
+    </form>
+</body>
+</html>
