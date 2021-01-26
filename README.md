@@ -1,5 +1,6 @@
 # WebAdmin
 
+
 ## Architecture Diagram
 
 ![Architecture](images/architecture.jpg)
@@ -14,7 +15,7 @@
 
 2. `app.py`
     - Made use of Flask micro-framework to host dynamic templates that provides content and forms to the user.
-    - After successful authentication, a session variables are 
+    - After successful authentication, session variables are created which stored machine credentials on browser.
     - There are following routes of web portal:
         1. `/home`
 
@@ -91,6 +92,11 @@
         conn.run('uname -s')
     ```
 
+---
+## References:
+1. https://flask.palletsprojects.com/en/1.1.x/quickstart/
+2. https://pythonbasics.org/flask-sessions/
+3. http://docs.pyinvoke.org/en/latest/api/context.html#invoke.context.Context.sudo
 
 ---
 ## SCREENSHOTS OF THE RUNNING APPLICATION
@@ -150,14 +156,3 @@ Delete user fails
     ---
 - ### Accessing Pages without providing valid Machine credentials
     ![bash_result](images/invalidSession.png)
-
----
-
-
-
-
-
-## References:
-1. https://flask.palletsprojects.com/en/1.1.x/quickstart/
-2. https://pythonbasics.org/flask-sessions/
-3. http://docs.pyinvoke.org/en/latest/api/context.html#invoke.context.Context.sudo
