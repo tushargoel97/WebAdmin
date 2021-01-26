@@ -3,7 +3,7 @@
 
 ## Architecture Diagram
 
-![Architecture](images/architecture.jpg)
+![Architecture](images/Architecture.jpg)
 
 ## Detailed Workflow
 1. `operations.py`
