@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request, session
-from .operations import OperationsUtil
+from flask import Flask, render_template, request, session, redirect, url_for
+from operations import OperationsUtil
 app = Flask(__name__)
 
 # app.config.from_object('config.Config')
@@ -23,16 +23,17 @@ def connectToMachine():
         
         if len(validIP)!=4:
             return render_template('error.html', message="Invalid Credentials")
-        
-        if OperationsUtil.tryConnection(system_ip, username, password)!=0:
-            raise Exception('Invalid')
-        
+        result = OperationsUtil.tryConnection(system_ip, username, password)
         session['system_ip'] = system_ip
         session['username'] = username
         session['password'] = password
-        return render_template('operations.html')
+        return redirect(url_for('operations'))
     except Exception as e:
         return render_template('error.html', message='Invalid Credentials')
+
+@app.route('/operations', methods=['GET'])
+def operations():
+    return render_template('operations.html')
 
 @app.route('/create', methods=['GET', 'POST'])
 def createUser():

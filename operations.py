@@ -2,9 +2,10 @@ from fabric import Connection
 
 class OperationsUtil():
     @staticmethod
-    def tryConnection(ip, user, passwd,):
-        with Connection(host = ip,user = user,connect_kwargs={"password": passwd}):
-            return 0
+    def tryConnection(ip, user, passwd):
+        with Connection(host = ip,user = user,connect_kwargs={"password": passwd}) as conn:
+            conn.run('uname -s')
+        return 0
 
     @staticmethod
     def createUser(ip, user, passwd, username, password, dirname=None):
@@ -16,7 +17,7 @@ class OperationsUtil():
                 conn.sudo(command,password=passwd,hide=True).stdout.strip()
             return ('User Created: '+username,0)
         except Exception as e:
-            return ('Cannot create user',1)
+            return ('User already Exists',1)
 
     @staticmethod
     def viewUser(ip, user, passwd):
@@ -34,9 +35,9 @@ class OperationsUtil():
         try:
             with Connection(host = ip,user = user,connect_kwargs={"password": passwd}) as conn:
                 conn.sudo(command,password=passwd,hide=True).stdout.strip()
-            return (username+' Deleted', 0)
+            return (username+' User deleted', 0)
         except Exception as e:
-            return ('Cannot delete user', 1)
+            return ("User doesn't Exists", 1)
 
     @staticmethod
     def updatePriv(ip, user, passwd, username):
