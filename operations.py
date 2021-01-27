@@ -42,7 +42,7 @@ class OperationsUtil():
 
     @staticmethod
     def deluser(ip, user, passwd, username):
-        command = "userdel -f "+username
+        command = "userdel -rf "+username
         try:
             with Connection(host = ip,user = user,connect_kwargs={"password": passwd}) as conn:
                 conn.sudo(command,password=passwd,hide=True).stdout.strip()
