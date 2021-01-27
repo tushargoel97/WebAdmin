@@ -35,9 +35,9 @@ def connectToMachine():
 @app.route('/operations', methods=['GET'])
 def operations():
     try:
-        a = session['system_ip']
-        b = session['username']
-        c = session['password']
+        sys_ip = session['system_ip']
+        usr = session['username']
+        passwd = session['password']
         return render_template('operations.html')
     except Exception as e:
         return render_template('message.html', message='Invalid Session', color='red')
@@ -58,9 +58,9 @@ def createUser():
             return render_template('message.html', message='Invalid Credentials', color='red')
     else:
         try:
-            a = session['system_ip']
-            b = session['username']
-            c = session['password']
+            sys_ip = session['system_ip']
+            usr = session['username']
+            passwd = session['password']
             return render_template('create_user.html')
         except Exception as e:
             return render_template('message.html', message='Invalid Session', color='red')
@@ -92,9 +92,9 @@ def updateUser():
             return render_template('message.html', message='Invalid Session', color='red')
     else:
         try:
-            a = session['system_ip']
-            b = session['username']
-            c = session['password']
+            sys_ip = session['system_ip']
+            usr = session['username']
+            passwd = session['password']
             return render_template('update_user.html')
         except Exception as e:
             return render_template('message.html', message='Invalid Session', color='red')
@@ -113,9 +113,9 @@ def deleteUser():
             return render_template('message.html', message='Invalid Session', color='red')
     else:
         try:
-            a = session['system_ip']
-            b = session['username']
-            c = session['password']
+            sys_ip = session['system_ip']
+            usr = session['username']
+            passwd = session['password']
             return render_template('delete_user.html')
         except Exception as e:
             return render_template('message.html', message='Invalid Session', color='red')
