@@ -1,4 +1,5 @@
 from fabric import Connection
+from invoke import Responder
 
 class OperationsUtil():
     @staticmethod
@@ -11,11 +12,21 @@ class OperationsUtil():
     def createUser(ip, user, passwd, username, password, dirname=None):
         if not dirname:
             dirname = username
-        command = "useradd -p "+password+" -m -d /home/"+dirname+"/ -g users -s /bin/bash "+username
+        
+        responder = Responder(
+            pattern=r'(Retype)?(N|n)?ew password:',
+            response=f'{password}\n',
+        )
+        command = "useradd -m -d /home/"+dirname+"/ -g users -s /bin/bash "+username
+        passwdCmd = "passwd "+username
         try:
             with Connection(host = ip,user = user,connect_kwargs={"password": passwd}) as conn:
                 conn.sudo(command,password=passwd,hide=True).stdout.strip()
-            return ('User Created: '+username,0)
+                val2 = conn.sudo(passwdCmd,password=passwd,hide=True,watchers = [responder]).exited
+            if val2==0:
+                return ('User Created: '+username,0)
+            else:
+                return ('Cannot create user',1)
         except Exception as e:
             return ('User already Exists',1)
 
