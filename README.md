@@ -91,6 +91,11 @@
     with Connection(host = '10.10.10.1',user = 'user', connect_kwargs={"password": 'passwd'}) as conn:
         conn.run('uname -s')
     ```
+---
+
+## Points of extension
+
+In order to create a secure connection between the client and server we can setup a HTTPS connection which requires SSL certificates to be configured.
 
 ---
 ## References:
